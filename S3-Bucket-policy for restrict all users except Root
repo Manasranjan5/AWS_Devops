@@ -1,0 +1,20 @@
+{
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Sid": "BlockallpublicaccessexceptRootuser",
+			"Effect": "Deny",
+			"Principal": "*",
+			"Action": "s3:*",
+			"Resource": [
+				"arn:aws:s3:::myapp1-demo-bucket/*",
+				"arn:aws:s3:::myapp1-demo-bucket"
+			],
+			"Condition": {
+				"StringNotEquals": {
+					"aws:PrincipalArn": "\"aws:PrincipalArn\": \"arn:aws:iam::838829923302:root\""
+				}
+			}
+		}
+	]
+}
